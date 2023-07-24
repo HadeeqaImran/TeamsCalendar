@@ -25,5 +25,18 @@ namespace TeamsCalendar.Services
 
             return restClient.Post(restRequest);
         }
+
+        public RestResponse GetAllEents()
+        {
+            JObject tokens = JObject.Parse(System.IO.File.ReadAllText(tokensFile));
+
+            RestClient restClient = new RestClient("https://graph.microsoft.com/v1.0/me/calendar/events");
+            RestRequest restRequest = new RestRequest();
+
+            restRequest.AddHeader("Authorization", "Bearer " + tokens["access_token"].ToString());
+            restRequest.AddHeader("Prefer", "outlook.timezone=\"Pakistan Standard Time\"");
+
+            return restClient.Get(restRequest);
+        }
     }
 }

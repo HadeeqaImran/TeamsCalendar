@@ -12,6 +12,12 @@ builder.Services.AddTransient<HomeService>();
 builder.Services.AddTransient<CalendarService>();
 builder.Services.AddTransient<OauthService>();
 
+//For allowing Cross Object Resource Sharing i.e. Cors
+builder.Services.AddCors(c =>
+{
+    c.AddPolicy("AllowOrigin", options => options.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader());
+});
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

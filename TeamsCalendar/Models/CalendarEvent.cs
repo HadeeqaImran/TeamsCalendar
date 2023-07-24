@@ -23,6 +23,7 @@ namespace TeamsCalendar.Models
         public Body Body { get; set; }
         public EventDateTime Start { get; set; }
         public EventDateTime End { get; set; }
+        public List<Attendee> Attendees { get; set; }
     }
 
     public class Body
@@ -35,5 +36,17 @@ namespace TeamsCalendar.Models
     {
         public DateTime DateTime { get; set; }
         public string TimeZone { get; set; }
+    }
+
+    public class Attendee
+    {
+        public EmailAddress EmailAddress { get; set; }
+        public string type { get; set; }
+    }
+
+    public class EmailAddress
+    {
+        public string address { get; set; }
+        public string name { get; set; }
     }
 }
